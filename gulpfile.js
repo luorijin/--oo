@@ -80,7 +80,7 @@ gulp.task('md5:jc',function(){
 gulp.task('md5:html',function(){
 	return gulp.src("server/**/*.html")
 	.pipe(rev.update())
-	.pipe(htmlmin({collapseWhitespace: true}))
+	.pipe(htmlmin({collapseWhitespace: true, minifyCSS: true}))
 	.pipe(gulp.dest('app'))
 })
 gulp.task('build',function(){
