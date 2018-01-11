@@ -31,8 +31,8 @@ gulp.task('less',function(){
 });
 gulp.task('html',function(){
 	gulp.src("src/**/*.html")
-	.pipe(styleLess())
 	.pipe(fileInclude({prefix:'@@',basepath:'@file'}))
+	.pipe(styleLess())
 	.pipe(cached('html'))
 	.pipe(gulp.dest("server")).pipe(connect.reload());
 });
@@ -61,14 +61,14 @@ gulp.task("build:js",function(){
 })
 gulp.task("build:html",function(){
 	return gulp.src("src/**/*.html")
-	.pipe(styleLess())
 	.pipe(fileInclude({prefix:'@@',basepath:'@file'}))
+	.pipe(styleLess())
 	.pipe(gulp.dest('server'))
 })
 gulp.task('concat', function () {
     return gulp.src('server/**/*.html')
     .pipe(useref())
-    .pipe(gulp.dest('server/'));
+    .pipe(gulp.dest('server'));
 });
 gulp.task('md5:jc',function(){
 	return gulp.src('server/**/*.{css,js}')
@@ -86,8 +86,3 @@ gulp.task('md5:html',function(){
 gulp.task('build',function(){
 	runSequence('del',['build:css','build:js','build:html'],'concat','md5:jc','md5:html');
 });
-gulp.task('default',function(){
-	gulp.src('src/index.html')
-	.pipe(styleLess())
-	.pipe(gulp.dest('dist'))
-})
