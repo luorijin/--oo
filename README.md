@@ -1,21 +1,12 @@
 # lgulp
 简单的gulp项目打包配置
-# gulp-rev2的index.js修改
 
+```js
+   1、 cnpm install
+   2、 gulp run运行
+   3、 gulp build打包至app目录
 ```
-if (!file.isNull()) {
-            var src = file.contents.toString('utf8');
-            let dir = path.dirname(file.path);
-            let assetReg = /(?:href=|src=)['|"]([^\s>"']+?)['|"]/g,
-                res;
-            while(res = assetReg.exec(src)){
-                let absPath = path.join(dir, res[1]);
-                let fileName =res[1].replace(/([\|\^\*\.\+\$\?\[\]\(\)\{\}])/g, '\\$1');
-                if(manifest[absPath]){
-                    let replaceUrl=path.join(path.dirname(res[1]),manifest[absPath]);
-                    src = src.replace(new RegExp(fileName, 'g'), replaceUrl);
-                }
-            }
-            file.contents = new Buffer(src);
-        }
+```
+    server是临时根目录（gulp目前很难实现像webpack读取内存目录 memory-fs）
+    localhost:8081
 ```

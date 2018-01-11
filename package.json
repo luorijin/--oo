@@ -1,12 +1,12 @@
 {
   "name": "lgulp",
   "version": "1.0.0",
-  "description": "",
+  "description": "gulp-server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "luo",
   "license": "ISC",
   "devDependencies": {
     "del": "^3.0.0",
