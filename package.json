@@ -11,11 +11,19 @@
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cached": "^1.1.1",
     "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.9.2",
     "gulp-connect": "^5.2.0",
     "gulp-file-include": "^2.0.1",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-less": "^3.4.0",
     "gulp-plumber": "^1.2.0",
-    "gulp-rev2": "^1.0.6"
+    "gulp-rev3": "^1.0.6",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.4",
+    "run-sequence": "^2.2.1",
+    "style-less2": "^1.0.1"
   }
 }
