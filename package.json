@@ -16,7 +16,7 @@
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^3.9.2",
     "gulp-connect": "^5.2.0",
-    "gulp-file-include": "^2.0.1",
+    "gulp-file-include2": "^2.0.1",
     "gulp-htmlmin": "^4.0.0",
     "gulp-less": "^3.4.0",
     "gulp-plumber": "^1.2.0",

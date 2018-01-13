@@ -7,18 +7,26 @@
 	<link rel="stylesheet" type="text/css" href="less/style.css">
 	<link rel="stylesheet" type="text/css" href="less/common.css">
 	<!-- endbuild -->
-	<style type="text/less">
-		.dd{
-			background: #ccc;
-			.gg{
-				background: #888;
-			}
-		}
-	</style>
 </head>
 <body>
 	<div>1111</div>
-@@include("inc/header.inc")
+ @@include('inc/header.inc',{
+        "title":"首页",
+        "bremb":[{
+            "url":"...",
+            "text":"首页"
+        },{
+            "url":"...",
+            "text":"链接一"
+        },{
+            "url":"",
+            "text":"链接二"
+        }]
+    })
 我是m
+<script type="text/javascript" src="jd/index.js"></script>
+<script type="text/javascript">
+    var oo=11111;
+</script>
 </body>
 </html>
