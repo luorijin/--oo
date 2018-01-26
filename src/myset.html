@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <title>小黄帽</title>
+    <script src="js/top.js"></script>
+    <link rel="stylesheet" type="text/css" href="less/common.css">
+    <style>
+        @@include('inc/var.less')
+        .myset{
+            background: #f8f8f8;
+        }
+        .myset li{
+            background: #fff;
+            height: 1rem;
+            line-height: 1rem;
+            color: #494949;
+        }
+        .btn-grounp{
+            text-align: center;
+            background: #f8f8f8;
+            padding-bottom: @bottom;
+        }
+        button.cancel{
+            background: @theme;
+            color: #fff;
+            height: 0.9rem;
+            line-height: 0.9rem;
+            width: 60%;
+            border-radius: 0.5rem;
+            font-size: 0.32rem;
+        }
+    </style>
+</head>
+<body>
+<div class="module">
+    @@include('inc/header.inc', {"title":"设置","back":true})
+    <div class="scroll-view myset">
+        <ul class="list">
+            <a href="about_us.html">
+            <li>
+                关于我们<i class="row"></i>
+            </li>
+            </a>
+        </ul>
+    </div>
+     <div class="btn-grounp">
+        <button class="cancel">退出账号</button>
+    </div>
+</div> 
+</body>
+</html>

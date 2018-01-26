@@ -1,14 +1,7 @@
-<style type="text/less">
-  .hhdddd{
-  	color: #fff;
-  }
-</style>
-<div class="page-header">
-    <h2>@@title</h2>
-    @@for (var i=1;i< bremb.length;i++){
-    	<li>111</li>
+
+<header class="top-nav-bar @@if(theme==true){theme}">
+	@@if(back==true){
+		<a href="javascript:history.back(-1)"><span class="history-back"></span></a>
 	}
-</div>
-<script type="text/javascript">
-	var ff=222;
-</script>
+	<div class="title">@@title</div>
+</header>

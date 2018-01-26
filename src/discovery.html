@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+	<title>小黄帽</title>
+	<script src="js/top.js"></script>
+	<link rel="stylesheet" type="text/css" href="less/common.css">
+	<style>
+		.scroll-view{
+			padding:0 10px;
+			padding-top: 10px;
+		}
+		.waterfall{
+			position: relative;
+			height: 100%;
+			.pin{
+				position: absolute;
+				font-size: 0px;
+				img{
+					border-radius: 0.1rem;
+					width: 100%;
+				}
+			}
+		}
+		#loader{
+			position: absolute;
+			left: 0px;
+			width: 100%;
+			line-height: 1rem;
+			text-align: center;
+		}
+		#previewImage-container{
+	      position: absolute;
+	      top:0px;
+	      left: 0px;
+	      transform: translateX(100%);
+	      -webkit-transform: translateX(100%);
+	      overflow: hidden;
+	      background: #000;
+	      z-index: 11;
+	    }
+	      .previewImage-box{
+	        width: 1000em;
+	        height: 100%;
+	      }
+	      .previewImage-box .previewImage-item{
+	        display: inline-block;
+	        margin-right: 15px;
+	        height: 100%;
+	        background: url(http://static.luyanghui.com/svg/oval.svg) 50% no-repeat;
+	      }
+	      .previewImage-box .previewImage-item:after{
+	        display: inline-block;
+	        height: 100%;
+	        content: '';
+	        vertical-align: middle;
+	      }
+	      .previewImage-box .previewImage-item img{
+	        width: 100%;
+	        vertical-align: middle;
+	      }
+	      .previewImage-text{
+	        position: absolute;
+	        width: 100%;
+	        line-height: 40px;
+	        font-size: 20px;
+	        color: #fff;
+	        text-align: center;
+	        bottom:0px;
+	        z-index: 22;
+	      }
+	</style>
+</head>
+<body>
+<div class="module">
+    @@include('inc/header.inc', {"title":"发现","theme":true})
+    <div class="download"><i></i><span class="s1">小黄帽</span><span class="s2">(下载APP体验更多功能)</span><button>下载</button></div>
+    <div class="nav-tab"></div>
+    <div class="scroll-view">
+    	<div class="waterfall" id="waterfall">
+    	</div>
+    	<div id="loader">加载中...</div>
+    </div>
+     @@include('inc/footer.inc', {"index":1})
+     <script type="text/javascript" src="js/waterfall.min.js"></script>
+     <script type="text/javascript" src="js/previewImage.js"></script>
+     <script type="text/javascript">
+     	var waterfall = new WaterFall({
+    		    container: '#waterfall',
+    		    pins: ".pin",
+    		    loader: '#loader',
+    		    gapHeight: 10,
+    		    gapWidth: 10,
+    		    col: 2,
+                threshold: 20
+    		});
+     	waterfall.on("load", function(){
+
+    			setTimeout(function(){
+    				// 生成模拟数据
+    				var mockData = {
+    				    data: []
+    				};
+    				for (var i = 0; i < 10; i++) {
+    				    mockData.data[i] = {
+    				        src: 'images/cs' + Math.ceil(Math.random() * 10) + '.jpg',
+    				        title: '图片' + Math.ceil(Math.random() * 10)
+    				    }
+    				}
+
+                    var arr = [];
+                    for (var i = 0, len = mockData.data.length; i < len; i++) {
+                        var data = mockData.data[i];
+                        arr.push('<div class="pin"><img src="' + data.src + '" class="img" alt="'+ data.title +'"> </div>')
+                    }
+
+    				// 调用 append 方法 检验是否所有的图片都具有高度后才会 append 进文档树中
+    				waterfall.append(arr.join(''), 'img')
+    			}, 2000)
+    		})
+     	var all = function(selector, contextElement) {
+      var nodeList,
+        list = [];
+      if (contextElement) {
+        nodeList = contextElement.querySelectorAll(selector);
+      } else {
+        nodeList = document.querySelectorAll(selector);
+      }
+      if (nodeList && nodeList.length > 0) {
+        list = Array.prototype.slice.call(nodeList);
+      }
+      return list;
+    }
+     	var delegate = function($el, eventType, selector, fn) {
+		      if (!$el) { return; }
+		      $el.addEventListener(eventType, function(e) {
+		        var targets = all(selector, $el);
+		        if (!targets) {
+		          return;
+		        }
+		        // findTarget:
+		        for (var i=0; i<targets.length; i++) {
+		          var $node = e.target;
+		          while ($node) {
+		            if ($node == targets[i]) {
+		              fn.call($node, e);
+		              break; //findTarget;
+		            }
+		            $node = $node.parentNode;
+		            if ($node == $el) {
+		              break;
+		            }
+		          }
+		        }
+		      }, false);
+		    };
+		     delegate(document.querySelector('#waterfall'), 'click','img',function(){
+			     	var obj = {
+	                urls : ['images/cs1.jpg','images/cs2.jpg','images/cs3.jpg'],
+	                current : 'images/cs1.jpg'
+	            };
+	        	previewImage.start(obj);
+    
+    		});
+     </script>
+</div> 
+</body>
+</html>
